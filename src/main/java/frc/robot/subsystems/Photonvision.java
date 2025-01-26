@@ -22,8 +22,6 @@ public class Photonvision extends SubsystemBase {
     public void periodic() {
         // Get the latest result from the camera
         PhotonPipelineResult result = camera.getLatestResult();
-        System.out.println(result.hasTargets());
-
         // Check if there are any targets detected
         if (result.hasTargets()) {
             // Retrieve the best target from the result
@@ -32,7 +30,7 @@ public class Photonvision extends SubsystemBase {
             // Extract the data from the target
             Yaw = target.getYaw();
             Area = target.getArea();
-            Pitch = target.getPitch();
+            Pitch = target.getPitch();//suGay
             ID = target.getFiducialId();
 
             // Display the target data on the SmartDashboard

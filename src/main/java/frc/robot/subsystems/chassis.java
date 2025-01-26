@@ -91,7 +91,6 @@ public class chassis extends SubsystemBase {
     Frontright.setInverted(true); 
     RearLeft.setInverted(true);
     Rearright.setInverted(true);
-    
   }
 
   public void stop(){
@@ -103,27 +102,26 @@ public class chassis extends SubsystemBase {
 
   public void autotarget() {
     double Tag_Area = SmartDashboard.getNumber("Tag_Area", 0);
-    double Tag_X = SmartDashboard.getNumber("Tag_Yaw", 0);
+    double Tag_Yaw = SmartDashboard.getNumber("Tag_Yaw", 0);
     
-    if (Tag_X < 13 && Tag_X > -14 || Tag_X == 0) {
-      stop();
-      if (Tag_Area < 6 && Tag_Area > 4 || Tag_Area == 0) {
-        stop();
+    if (Tag_Yaw >= -9 && Tag_Yaw <= 9) {
+      if (Tag_Area == 0 || (Tag_Area >= 3 && Tag_Area <= 5)) {
+          stop();
       }
-      else if (Tag_Area >= 6) {
-        backward();
+      else if (Tag_Area > 5) {
+          backward();
       }
-      else if (Tag_Area <= 4) {
-        forward();
+      else if (Tag_Area > 0 && Tag_Area < 3) {
+          forward();
       }
-    } 
-    else if (Tag_X >= 13) {
+   }
+    else if (Tag_Yaw > 9) {
       right();
     }
-    else {
+    else if (Tag_Yaw < -9) {
       left();
-    }  
-}
+    }
+  }
 
   public class AutoTargetCommand extends Command {
     private final chassis mChassis;
