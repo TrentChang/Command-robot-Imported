@@ -6,7 +6,6 @@ package frc.robot;
 
 import frc.robot.commands.Autos;  
 import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.Candle;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.chassis;
 import frc.robot.subsystems.Photonvision;
@@ -28,7 +27,6 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final chassis mChassis = new chassis();
-  private final Candle mCandle = new Candle();
   private final Limelight mlimelight = new Limelight();
   private final Photonvision mPV = new Photonvision();
 
@@ -40,7 +38,7 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     mChassis.setDefaultCommand(
-      new RunCommand(()-> mChassis.drive(m_driverController.getLeftX()*0.4, m_driverController.getRightY()*0.5), mChassis));
+      new RunCommand(()-> mChassis.drive(m_driverController.getLeftX()*-0.7, m_driverController.getRightY()*0.7), mChassis));
   }
 
   /**

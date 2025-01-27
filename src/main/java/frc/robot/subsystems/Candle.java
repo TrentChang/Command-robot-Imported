@@ -1,3 +1,4 @@
+/*
 package frc.robot.subsystems;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -81,7 +82,7 @@ public class Candle extends SubsystemBase{
         double Output_X = SmartDashboard.getNumber("Output_X", 0);
         double Output_Y = SmartDashboard.getNumber("Output_Y", 0);
         
-        /** 
+        
         if(Fiducial_ID == -1){
             SetDefault();
         }
@@ -95,7 +96,7 @@ public class Candle extends SubsystemBase{
                 TagAligned();
             }
         }
-       */
+       
         if (Tag_Area == 0){
            SetDefault() ;
         }
@@ -121,4 +122,5 @@ public class Candle extends SubsystemBase{
 
         } 
     }
-}
+} 
+*/

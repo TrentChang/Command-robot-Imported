@@ -103,60 +103,8 @@ public class chassis extends SubsystemBase {
   public void autotarget() {
     double Tag_Area = SmartDashboard.getNumber("Tag_Area", 0);
     double Tag_Yaw = SmartDashboard.getNumber("Tag_Yaw", 0);
-    
-    if (Tag_Yaw >= -9 && Tag_Yaw <= 9) {
-      if (Tag_Area == 0 || (Tag_Area >= 3 && Tag_Area <= 5)) {
-          stop();
-      }
-      else if (Tag_Area > 5) {
-          backward();
-      }
-      else if (Tag_Area > 0 && Tag_Area < 3) {
-          forward();
-      }
-   }
-    else if (Tag_Yaw > 9) {
-      right();
-    }
-    else if (Tag_Yaw < -9) {
-      left();
-    }
   }
 
-  public class AutoTargetCommand extends Command {
-    private final chassis mChassis;
-
-    public AutoTargetCommand(chassis subsystem) {
-        mChassis = subsystem;
-        addRequirements(subsystem);
-    }
-
-    @Override
-    public void execute() {
-        mChassis.autotarget();
-    }
-
-    @Override
-    public void end(boolean interrupted) {
-        mChassis.stop();
-    }
-}
-
-  public Command exampleMethodCommand() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires this subsystem.
-    return runOnce(
-        () -> {
-          /* one-time action goes here */
-        });
-    }
-  
-  /**
-   * An example method querying a boolean state of the subsystem (for example, a digital sensor).
-   *
-   * @return value of some boolean subsystem state, such as a digital sensor.
-   */
-  
   public boolean exampleCondition() {
     // Query some boolean state, such as a digital sensor.
     return false;
@@ -164,8 +112,8 @@ public class chassis extends SubsystemBase {
 
   @Override
   public void periodic() {
-}
-    
+  }
+
 
   @Override
   public void simulationPeriodic() {
