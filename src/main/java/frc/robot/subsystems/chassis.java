@@ -24,6 +24,8 @@ public class chassis extends SubsystemBase {
   public final WPI_VictorSPX RearLeft = new WPI_VictorSPX(chassisID.RL);
   public final WPI_VictorSPX Rearright = new WPI_VictorSPX(chassisID.RR);
 
+  public double Tag_Area = 0;
+  public double Tag_Yaw = 0;
 
   public DifferentialDrive tank = new DifferentialDrive(Frontleft, Frontright);
   
@@ -45,7 +47,7 @@ public class chassis extends SubsystemBase {
     }
   
   public void drive(double X, double Y){
-    tank.arcadeDrive(-X, Y);
+    tank.arcadeDrive(X, -Y);
   }
   
   public void forward(){
@@ -103,6 +105,24 @@ public class chassis extends SubsystemBase {
   public void autotarget() {
     double Tag_Area = SmartDashboard.getNumber("Tag_Area", 0);
     double Tag_Yaw = SmartDashboard.getNumber("Tag_Yaw", 0);
+
+    if (Tag_Yaw < 9 && Tag_Yaw > -9 || Tag_Yaw == 0) {
+      if (Tag_Area > 2 && Tag_Area < 6 || Tag_Area == 0) {
+        stop();
+      }
+      else if (Tag_Area < 2 && Tag_Area > 0) {
+        forward();
+      }
+      else if (Tag_Area > 6) {
+        backward();
+      }
+    }
+    else if (Tag_Yaw > 9) {
+      right();
+    }
+    else if (Tag_Yaw < -9) {
+      left();
+    }
   }
 
   public boolean exampleCondition() {

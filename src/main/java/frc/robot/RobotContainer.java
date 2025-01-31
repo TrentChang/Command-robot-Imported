@@ -38,7 +38,7 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     mChassis.setDefaultCommand(
-      new RunCommand(()-> mChassis.drive(m_driverController.getLeftX()*-0.7, m_driverController.getRightY()*0.7), mChassis));
+      new RunCommand(()-> mChassis.drive(m_driverController.getLeftX()*-0.5, m_driverController.getRightY()*0.5), mChassis));
   }
 
   /**
